@@ -7,7 +7,7 @@ def case2():
                                 [0, 1, 1],
                                 [1, 0, 1],
                                 [1, 1, 1]])
-    training_outputs = np.array([[0, 1, 1, 0]]).T
+    training_outputs = np.array([[0], [1], [1], [0]]).T
 
     np.random.seed(1)
 
@@ -15,8 +15,8 @@ def case2():
     synaptic_weights2 = 2 * np.random.random((4, 1)) - 1
 
     print("Случайные стартовые веса")
-    print(synaptic_weights1)
-    print(synaptic_weights2)
+    print("1", synaptic_weights1)
+    print("2", synaptic_weights2)
 
     # Метод обратного распространения
     for i in range(20000):
@@ -25,12 +25,16 @@ def case2():
         outputs2 = sigmoid(np.dot(outputs1, synaptic_weights2))
 
         err2 = training_outputs - outputs2
+        delta2 = err2 * (outputs2 * (1 - outputs2))
+        err1 = np.dot(synaptic_weights2.T, delta2)
+        delta1 = err1 * (outputs1 * (1 - outputs1))
+
         #                                    delta2
-        adjustments2 = np.dot(outputs1.T, err2 * (outputs2 * (1 - outputs2)))
+        # adjustments2 = np.dot(outputs1.T, err2 * (outputs2 * (1 - outputs2)))
+        adjustments2 = np.dot(outputs1.T, delta2)
         synaptic_weights2 += adjustments2
 
-        err1 = np.dot(synaptic_weights1.T, err2 * (outputs2 * (1 - outputs2)))
-        adjustments1 = np.dot(input_layer.T, err1 * (outputs1 * (1 - outputs1)))
+        adjustments1 = np.dot(input_layer.T, delta1)
         synaptic_weights1 += adjustments1
 
     print("Веса после обучение")
