@@ -6,10 +6,13 @@ def sigmoid(x):
 
 
 class NLOneLayer:
-    def __init__(self, training_inputs, training_outputs, input_dim=3, output_dim=1):
+    def __init__(self, training_inputs, training_outputs, input_neurons=3,  output_neurons=1):
+        """ one layer with input neurons by default 3 and one output neurons
+        """
         np.random.seed(1)
+        self.synaptic_weights = 2 * np.random.random((input_neurons, output_neurons)) - 1
 
-        self.synaptic_weights = 2 * np.random.random((input_dim, output_dim)) - 1
+        training_output = training_outputs.T
 
         print("Случайные стартовые веса")
         print(self.synaptic_weights)
