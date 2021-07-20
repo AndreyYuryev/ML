@@ -8,11 +8,10 @@ def sigmoid(x):
 class NLOneLayer:
     def __init__(self, training_inputs, training_outputs, input_neurons=3,  output_neurons=1):
         """ one layer with input neurons by default 3 and one output neurons
+            output matrix should be transposed  .T
         """
         np.random.seed(1)
         self.synaptic_weights = 2 * np.random.random((input_neurons, output_neurons)) - 1
-
-        training_output = training_outputs.T
 
         print("Случайные стартовые веса")
         print(self.synaptic_weights)
@@ -36,15 +35,17 @@ class NLOneLayer:
 
 
 class NLTwoLayer:
-    def __init__(self, training_inputs, training_outputs, input_dim=3, output_dim=1):
+    def __init__(self, training_inputs, training_outputs, input_dim=3, fall=4, output_dim=1):
+        """ two layer with input neurons by default 3 and one output neurons
+            output matrix should be transposed  .T
+        """
         np.random.seed(1)
 
-        self.synaptic_weights1 = 2 * np.random.random((3, 4)) - 1
-        self.synaptic_weights2 = 2 * np.random.random((4, 1)) - 1
+        self.synaptic_weights1 = 2 * np.random.random((input_dim, fall)) - 1
+        self.synaptic_weights2 = 2 * np.random.random((fall, output_dim)) - 1
 
         print("Случайные стартовые веса")
-        print("1", self.synaptic_weights1)
-        print("2", self.synaptic_weights2)
+        print(self.synaptic_weights1, self.synaptic_weights2)
 
         # Метод обратного распространения
         for i in range(60000):
@@ -66,8 +67,7 @@ class NLTwoLayer:
             self.synaptic_weights1 += adjustments1
 
         print("Веса после обучение")
-        print(self.synaptic_weights1)
-        print(self.synaptic_weights2)
+        print(self.synaptic_weights1, self.synaptic_weights2)
 
     def calculate(self, input_values):
         outputs1 = sigmoid(np.dot(input_values, self.synaptic_weights1))
