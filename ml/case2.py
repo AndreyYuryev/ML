@@ -7,7 +7,7 @@ def case2():
                                 [0, 1, 1],
                                 [1, 0, 1],
                                 [1, 1, 1]])
-    training_outputs = np.array([[0], [1], [1], [0]]).T
+    training_outputs = np.array([[0, 1, 1, 0]]).T
 
     np.random.seed(1)
 
@@ -42,11 +42,14 @@ def case2():
     print(synaptic_weights2)
 
     print("Результат после обучения")
+    print(outputs1)
     print(outputs2)
 
     # тест
+
     new_inputs = np.array([1, 1, 0])  # new situation
-    outputs1 = sigmoid(np.dot(new_inputs, synaptic_weights2))
+    outputs1 = sigmoid(np.dot(new_inputs, synaptic_weights1))
     outputs2 = sigmoid(np.dot(outputs1, synaptic_weights2))
     print("Новая ситуация")
+    print(outputs1)
     print(outputs2)
