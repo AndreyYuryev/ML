@@ -1,5 +1,5 @@
-from .ml.stuff import NLOneLayer, NLTwoLayer
-from .ml.case1 import case1
+from ml import NLOneLayer, NLTwoLayer
+from ml import case1
 
 
 def main():
