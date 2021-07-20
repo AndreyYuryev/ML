@@ -1,11 +1,8 @@
-import numpy as np
-from .case1 import case1
-from .case2 import case2
+from .stuff import NLOneLayer, NLTwoLayer
 
 
 def main():
-    print("Start ml")
-    case2()
+    pass
 
 
 if __name__ == '__main__':

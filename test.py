@@ -1,12 +1,9 @@
-from ml.case3 import case3
-from ml.case2 import case2
+from .ml.stuff import NLOneLayer, NLTwoLayer
+from .ml.case1 import case1
 
 
 def main():
-    print("sample")
-    case3()
-    print("my")
-    case2()
+    case1()
 
 
 if __name__ == '__main__':
