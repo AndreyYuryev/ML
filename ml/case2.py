@@ -11,33 +11,38 @@ def case2():
 
     np.random.seed(1)
 
-    synaptic_weights = 2 * np.random.random((3, 1)) - 1
+    synaptic_weights1 = 2 * np.random.random((3, 4)) - 1
+    synaptic_weights2 = 2 * np.random.random((4, 1)) - 1
 
     print("Случайные стартовые веса")
-    print(synaptic_weights)
+    print(synaptic_weights1)
+    print(synaptic_weights2)
 
     # Метод обратного распространения
     for i in range(20000):
         input_layer = training_inputs
-        outputs = sigmoid(np.dot(input_layer, synaptic_weights))
+        outputs1 = sigmoid(np.dot(input_layer, synaptic_weights1))
+        outputs2 = sigmoid(np.dot(outputs1, synaptic_weights2))
 
-        err = training_outputs - outputs
-        adjustments = np.dot(input_layer.T, err * (outputs * (1 - outputs)))
-        synaptic_weights += adjustments
+        err2 = training_outputs - outputs2
+        #                                    delta2
+        adjustments2 = np.dot(outputs1.T, err2 * (outputs2 * (1 - outputs2)))
+        synaptic_weights2 += adjustments2
+
+        err1 = np.dot(synaptic_weights1.T, err2 * (outputs2 * (1 - outputs2)))
+        adjustments1 = np.dot(input_layer.T, err1 * (outputs1 * (1 - outputs1)))
+        synaptic_weights1 += adjustments1
 
     print("Веса после обучение")
-    print(synaptic_weights)
+    print(synaptic_weights1)
+    print(synaptic_weights2)
 
     print("Результат после обучения")
-    print(outputs)
+    print(outputs2)
 
     # тест
     new_inputs = np.array([1, 1, 0])  # new situation
-    outputs = sigmoid(np.dot(new_inputs, synaptic_weights))
+    outputs1 = sigmoid(np.dot(new_inputs, synaptic_weights2))
+    outputs2 = sigmoid(np.dot(outputs1, synaptic_weights2))
     print("Новая ситуация")
-    print(outputs)
-
-    new_inputs = np.array([0, 0, 1])  # new situation
-    outputs = sigmoid(np.dot(new_inputs, synaptic_weights))
-    print("Новая ситуация")
-    print(outputs)
+    print(outputs2)
