@@ -19,14 +19,14 @@ def case2():
     print("2", synaptic_weights2)
 
     # Метод обратного распространения
-    for i in range(20000):
+    for i in range(60000):
         input_layer = training_inputs
         outputs1 = sigmoid(np.dot(input_layer, synaptic_weights1))
         outputs2 = sigmoid(np.dot(outputs1, synaptic_weights2))
 
         err2 = training_outputs - outputs2
         delta2 = err2 * (outputs2 * (1 - outputs2))
-        err1 = np.dot(synaptic_weights2.T, delta2)
+        err1 = np.dot(delta2, synaptic_weights2.T)
         delta1 = err1 * (outputs1 * (1 - outputs1))
 
         #                                    delta2
