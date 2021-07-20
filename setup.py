@@ -15,12 +15,12 @@ setup(name='ML',
       long_description=readme(),
       long_description_content_type="text/markdown",
       packages=setuptools.find_packages(),
-      package_dir={'ml': 'ml'},
+      package_dir={'ML': 'ML'},
       install_requires=['numpy'],
       # install_requires=['numpy', 'selenium', 'openpyxl'],
       include_package_data=True,
       entry_points={
-          'console_scripts': ['ml = ml.__main__:main']
+          'console_scripts': ['ml = ML.__main__:main']
       }
       # packages=['qs_check']
       )
