@@ -37,7 +37,7 @@ class NLOneLayer:
 
 class NLTwoLayer:
     def __init__(self, training_inputs, training_outputs, input_dim=3, fall=4, output_dim=1):
-        """ two layer with input neurons by default 3 and one output neurons
+        """ two layers with input neurons by default 3 and one output neurons
             output matrix should be transposed  .T
         """
         print("Два слоя")
@@ -80,7 +80,7 @@ class NLTwoLayer:
 
 class NLThreeLayer:
     def __init__(self, training_inputs, training_outputs, input_dim=3, fall=4, output_dim=1):
-        """ two layer with input neurons by default 3 and one output neurons
+        """ three layers with input neurons by default 3 and one output neurons
             output matrix should be transposed  .T
         """
         print("Три слоя")
