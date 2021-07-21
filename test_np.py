@@ -12,5 +12,6 @@ def main():
     new_inputs = np.array([1, 0, 1, 0])  # new situation
     my_nl_one.calculate(input_values=new_inputs)
 
+
 if __name__ == '__main__':
     main()
