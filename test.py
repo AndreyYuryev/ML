@@ -22,7 +22,7 @@ def main():
     my_nl_two = NLTwoLayer(training_inputs=training_inputs, training_outputs=training_outputs, hidden_neurons=4)
     my_nl_two.calculate(input_values=new_inputs)
 
-    my_nl_three = NLThreeLayer(training_inputs=training_inputs, training_outputs=training_outputs, fall=4)
+    my_nl_three = NLThreeLayer(training_inputs=training_inputs, training_outputs=training_outputs, hidden_neurons_first_layer=4)
     my_nl_three.calculate(input_values=new_inputs)
 
 

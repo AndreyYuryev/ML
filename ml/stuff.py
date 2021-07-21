@@ -7,7 +7,7 @@ def sigmoid(x):
 
 class NLOneNeuron:
     def __init__(self, training_inputs, training_outputs, input_numbers=3, output_neurons=1):
-        """ one layer with input neurons by default 3 and one output neurons
+        """ one layer with input signals by default 3 and one output neurons
             output matrix should be transposed  .T
         """
         print("Один слой")
@@ -37,7 +37,8 @@ class NLOneNeuron:
 
 class NLTwoLayer:
     def __init__(self, training_inputs, training_outputs, input_numbers=3, hidden_neurons=4, output_neuron=1):
-        """ two layers with input by default 3, hidden layer with by default 4 neurons and one output neurons
+        """ two layers with input signals by default 3, hidden layer with by default 4 neurons
+            and one output neurons
             output matrix should be transposed  .T
         """
         print("Два слоя")
@@ -79,16 +80,19 @@ class NLTwoLayer:
 
 
 class NLThreeLayer:
-    def __init__(self, training_inputs, training_outputs, input_dim=3, fall=4, output_dim=1):
-        """ three layers with input neurons by default 3 and one output neurons
+    def __init__(self, training_inputs, training_outputs, input_dim=3, hidden_neurons_first_layer=4,
+                 hidden_neurons_second_layer=4, output_dim=1):
+        """ three layers with input signals by default 3,
+            hidden layer1 with by default 4 neurons, hidden layer2 with by default 4 neurons
+            and one output neurons
             output matrix should be transposed  .T
         """
         print("Три слоя")
         np.random.seed(1)
 
-        self.synaptic_weights1 = 2 * np.random.random((input_dim, fall)) - 1
-        self.synaptic_weights2 = 2 * np.random.random((fall, fall)) - 1
-        self.synaptic_weights3 = 2 * np.random.random((fall, output_dim)) - 1
+        self.synaptic_weights1 = 2 * np.random.random((input_dim, hidden_neurons_first_layer)) - 1
+        self.synaptic_weights2 = 2 * np.random.random((hidden_neurons_first_layer, hidden_neurons_second_layer)) - 1
+        self.synaptic_weights3 = 2 * np.random.random((hidden_neurons_second_layer, output_dim)) - 1
 
         print("Случайные стартовые веса")
         print(self.synaptic_weights1, self.synaptic_weights2, self.synaptic_weights3)
