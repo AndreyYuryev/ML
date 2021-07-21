@@ -1,4 +1,4 @@
-from .stuff import NLOneLayer, NLTwoLayer
+from .stuff import NLOneNeuron, NLTwoLayer
 
 
 def main():
