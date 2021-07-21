@@ -80,8 +80,8 @@ class NLTwoLayer:
 
 
 class NLThreeLayer:
-    def __init__(self, training_inputs, training_outputs, input_dim=3, hidden_neurons_first_layer=4,
-                 hidden_neurons_second_layer=4, output_dim=1):
+    def __init__(self, training_inputs, training_outputs, input_dim=3, first_layer_neurons=4,
+                 second_layer_neurons=4, output_dim=1):
         """ three layers with input signals by default 3,
             hidden layer1 with by default 4 neurons, hidden layer2 with by default 4 neurons
             and one output neurons
@@ -90,9 +90,9 @@ class NLThreeLayer:
         print("Три слоя")
         np.random.seed(1)
 
-        self.synaptic_weights1 = 2 * np.random.random((input_dim, hidden_neurons_first_layer)) - 1
-        self.synaptic_weights2 = 2 * np.random.random((hidden_neurons_first_layer, hidden_neurons_second_layer)) - 1
-        self.synaptic_weights3 = 2 * np.random.random((hidden_neurons_second_layer, output_dim)) - 1
+        self.synaptic_weights1 = 2 * np.random.random((input_dim, first_layer_neurons)) - 1
+        self.synaptic_weights2 = 2 * np.random.random((first_layer_neurons, second_layer_neurons)) - 1
+        self.synaptic_weights3 = 2 * np.random.random((second_layer_neurons, output_dim)) - 1
 
         print("Случайные стартовые веса")
         print(self.synaptic_weights1, self.synaptic_weights2, self.synaptic_weights3)
